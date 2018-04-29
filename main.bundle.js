@@ -47,11 +47,11 @@
 	'use strict';
 
 	var foodsRequests = __webpack_require__(1);
-	var foodsDiary = __webpack_require__(2);
-	var events = __webpack_require__(3);
+	var foodsDiary = __webpack_require__(3);
+	var events = __webpack_require__(4);
 	var fileName = location.pathname.split('/').slice(-1)[0];
-	__webpack_require__(4);
-	__webpack_require__(8);
+	__webpack_require__(5);
+	__webpack_require__(9);
 
 	$(document).ready(function () {
 	  renderData(fileName);
@@ -302,11 +302,11 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var baseURL = `http://localhost:3000`
+	var baseURL = __webpack_require__(2).baseURL();
 
 	var foodsAPIFetch = function foodsAPIFetch(id, method, body) {
 	  return fetch(baseURL + '/api/v1/foods/' + id, {
@@ -405,13 +405,32 @@
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	var baseURL = function baseURL() {
+	  var host = window.location.hostname;
+	  if (host === "localhost" || host === "127.0.0.1") {
+	    return "http://localhost:3000";
+	  } else {
+	    return "https://hidden-shelf-31993.herokuapp.com";
+	  }
+	};
+
+	module.exports = {
+	  baseURL: baseURL
+	};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var foodsRequests = __webpack_require__(1);
 
-	var baseURL = `http://localhost:3000`
+	var baseURL = __webpack_require__(2).baseURL();
 
 	var mealsAPIFetch = function mealsAPIFetch(id, method, extension) {
 	  return fetch(baseURL + '/api/v1/meals/' + id + extension, {
@@ -576,7 +595,7 @@
 	};
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -618,16 +637,16 @@
 	};
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(5);
+	var content = __webpack_require__(6);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(7)(content, {});
+	var update = __webpack_require__(8)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -644,10 +663,10 @@
 	}
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(6)();
+	exports = module.exports = __webpack_require__(7)();
 	// imports
 
 
@@ -658,7 +677,7 @@
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 	/*
@@ -714,7 +733,7 @@
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -966,16 +985,16 @@
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(9);
+	var content = __webpack_require__(10);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(7)(content, {});
+	var update = __webpack_require__(8)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -992,10 +1011,10 @@
 	}
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(6)();
+	exports = module.exports = __webpack_require__(7)();
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Montserrat);", ""]);
 
